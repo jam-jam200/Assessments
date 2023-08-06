@@ -21,15 +21,9 @@ public class LeapYear {
         scanner.close();
     }
 
-    /**
-     * Check if the given year is a leap year.
-     *
-     * @param year The year to be checked.
-     * @return true if the year is a leap year, false otherwise.
-     */
+    //method to check if the given year is a leap year.
     public static boolean isLeapYear(int year) {
-        // A leap year is either divisible by 4 but not divisible by 100,
-        // or it is divisible by 400.
+        // A leap year is either divisible by 4 but not divisible by 100 or it is divisible by 400.
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 }
