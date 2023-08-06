@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Calculator {
@@ -7,90 +6,116 @@ public class Calculator {
         int option;
 
         do {
-            // Displaying options for users
-            System.out.println("Please select an option from the list below:");
+            // Displaying the menu with user options
+            System.out.println("Please select an option:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
-            System.out.println("2. Convert input and round up to 2 decimal points");
-            System.out.println("3. Enter 5 values to calculate the sum, average value, minimum value, maximum value  and square root of maximum value of inputted values");
+            System.out.println("2. Convert user input and round to 2 decimal points");
+            System.out.println("3. Accept 5 values and display various calculations");
             System.out.println("0. Exit");
 
-            //reading user's input from the console
+            // Reading the user's option
             option = scanner.nextInt();
 
+            // Performing the corresponding action based on the selected option
             switch (option) {
-                case 1 -> calculateSumOfTwoNumbers(scanner);
-                case 2 -> performOperation(scanner, "Enter a number: ", (double a) -> Math.round(a * 100.0) / 100.0);
-                case 3 -> performMultipleOperations(scanner);
-                case 0 -> System.out.println("Goodbye!");
-                default -> System.out.println("Invalid option. Please select a valid option between 1, 2, 3, or 0 to exit program.");
+                case 1:
+                    validateSumOfTwoNumbers(scanner);
+                    break;
+                case 2:
+                    validateConversionAndRoundInput(scanner);
+                    break;
+                case 3:
+                    validateAndDisplayValues(scanner);
+                    break;
+                case 0:
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
         } while (option != 0);
 
-        //closing scanner to release resources since it's not in use
         scanner.close();
     }
 
-    // method to calculate the sum of 2 whole numbers
-    public static void calculateSumOfTwoNumbers(Scanner scanner) {
-        int num1, num2;
-
-        // prompting user to enter the first whole number
-        do {
-            System.out.print("Enter the first whole number: ");
-            //checks if user entered a number that isn't a whole number and also stops the loop from becoming an infinite loop
-            while (!scanner.hasNextInt()) {
-                System.out.println("Invalid input. Please enter a whole number.");
-                scanner.next();
-            }
-            num1 = scanner.nextInt();
-        } while (num1 < Integer.MIN_VALUE || num1 > Integer.MAX_VALUE);
-
-        // prompting user to enter the second whole number
-        do {
-            System.out.print("Enter the second whole number: ");
-            //checks if user entered a number that isn't a whole number and also stops the loop from becoming an infinite loop
-            while (!scanner.hasNextInt()) {
-                System.out.println("Invalid input. Please enter a whole number.");
-                scanner.next();
-            }
-            num2 = scanner.nextInt();
-        } while (num2 < Integer.MIN_VALUE || num2 > Integer.MAX_VALUE);
+    // Method 1: Calculate the sum of 2 whole numbers
+    public static void validateSumOfTwoNumbers(Scanner scanner) {
+        System.out.print("Enter the first whole number: ");
+        int num1 = validateWholeNumberInput(scanner);
+        System.out.print("Enter the second whole number: ");
+        int num2 = validateWholeNumberInput(scanner);
 
         int sum = num1 + num2;
         System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
     }
 
-    // method to calculate multiple operations
-    public static void performOperation(Scanner scanner, String prompt1, BinaryOperation operation) {
-        System.out.print(prompt1);
-        double num1 = scanner.nextDouble();
+    // Method to validate whole number input
+    public static int validateWholeNumberInput(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            // If the user enters a non-integer value, display an error message
+            System.out.print("Invalid input. Please enter a whole number: ");
 
-        double result = operation.calculate(num1);
-        System.out.println("Result: " + result);
+            // Clear the non-integer input from the scanner's buffer
+            scanner.next();
+        }
+
+        // If the loop exits, it means the user has entered a valid whole number, so we return it
+        return scanner.nextInt();
     }
 
-    // Functional interface for binary operations
-    @FunctionalInterface
-    interface BinaryOperation {
-        double calculate(double a);
+    // Method 2: Convert user input and round to 2 decimal points
+    public static void validateConversionAndRoundInput(Scanner scanner) {
+        System.out.print("Enter a number: ");
+        double number = validateDoubleInput(scanner);
+
+        double rounded = Math.round(number * 100.0) / 100.0;
+        System.out.println("Rounded to 2 decimal points: " + rounded);
     }
 
-    // Method to accept 5 values and display various calculations
-    public static void performMultipleOperations(Scanner scanner) {
+    // Method to validate double input
+    public static double validateDoubleInput(Scanner scanner) {
+        while (!scanner.hasNextDouble()) {
+            // If the user enters a non-numeric value, display an error message
+            System.out.print("Invalid input. Please enter a valid number: ");
+
+            // Clear the non-numeric input from the scanner's buffer
+            scanner.next();
+        }
+
+        // If the loop exits, it means the user has entered a valid number, so we return it
+        return scanner.nextDouble();
+    }
+
+    // Method 3: Accept 5 values and display various calculations
+    public static void validateAndDisplayValues(Scanner scanner) {
         double[] values = new double[5];
+
+        System.out.println("Enter 5 numeric values:");
 
         // Accepting user input for 5 values and storing them in an array
         for (int i = 0; i < 5; i++) {
             System.out.print("Enter value " + (i + 1) + ": ");
-            values[i] = scanner.nextDouble();
+            values[i] = validateDoubleInput(scanner);
         }
 
-        // Using Java 8 Stream API to perform calculations
-        double sum = Arrays.stream(values).sum();
-        double average = Arrays.stream(values).average().orElse(0);
-        double min = Arrays.stream(values).min().orElse(0);
-        double max = Arrays.stream(values).max().orElse(0);
-        double sqrtMax = Math.sqrt(max);
+        double sum = 0;
+        double min = values[0];
+        double max = values[0];
+        double sqrtMax = Math.sqrt(values[0]);
+
+        // Calculating sum, minimum, maximum, and the square root of the maximum value
+        for (double value : values) {
+            sum += value;
+            if (value < min) {
+                min = value;
+            }
+            if (value > max) {
+                max = value;
+                sqrtMax = Math.sqrt(max);
+            }
+        }
+
+        double average = sum / values.length;
 
         // Displaying the calculated values to the user
         System.out.println("Sum of all values: " + sum);
