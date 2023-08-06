@@ -32,6 +32,7 @@ public class Calculator {
     //method to calculate the sum of 2 whole numbers
     public static void sumOfTwoNumbers(Scanner scanner) {
         System.out.print("Enter the first whole number: ");
+        //validating user's input
         int num1 = validateWholeNumberInput(scanner);
         System.out.print("Enter the second whole number: ");
         int num2 = validateWholeNumberInput(scanner);
@@ -54,30 +55,30 @@ public class Calculator {
         return scanner.nextInt();
     }
 
-    //method to convert user input and round to 2 decimal points
+    //method to convert user input and round up to 2 decimal points
     public static void conversionAndRoundInput(Scanner scanner) {
         System.out.print("Enter a number: ");
-        double number = validateDoubleInput(scanner);
+        //validating user's input
+        double num = validateInput(scanner);
 
-        double rounded = Math.round(number * 100.0) / 100.0;
-        System.out.println("Rounded to 2 decimal points: " + rounded);
+        //rounding the num to 2 decimal places
+        double roundedNum = Math.round(num * 100.0) / 100.0;
+        System.out.println("Rounded to 2 decimal points: " + roundedNum);
     }
 
-    // Method to validate double input
-    public static double validateDoubleInput(Scanner scanner) {
+    //method to validate user's input
+    public static double validateInput(Scanner scanner) {
         while (!scanner.hasNextDouble()) {
-            // If the user enters a non-numeric value, display an error message
+            //if the user enters a non-numeric value or invalid value an error message will be displayed
             System.out.print("Invalid input. Please enter a valid number: ");
-
-            // Clear the non-numeric input from the scanner's buffer
             scanner.next();
         }
 
-        // If the loop exits, it means the user has entered a valid number, so we return it
+        //proceeding with the validated number(valid numeric value)
         return scanner.nextDouble();
     }
 
-    // Method 3: Accept 5 values and display various calculations
+    //method to calculate the sum, average, minimum, maximum and square root of maximum value of 5 values
     public static void validateAndDisplayValues(Scanner scanner) {
         double[] values = new double[5];
 
@@ -86,7 +87,7 @@ public class Calculator {
         // Accepting user input for 5 values and storing them in an array
         for (int i = 0; i < 5; i++) {
             System.out.print("Enter value " + (i + 1) + ": ");
-            values[i] = validateDoubleInput(scanner);
+            values[i] = validateInput(scanner);
         }
 
         double sum = 0;
