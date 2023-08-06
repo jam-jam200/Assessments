@@ -93,19 +93,19 @@ public class Calculator {
         }
 
         double sum = 0;
-        double min = values[0];
-        double max = values[0];
+        double minVal = values[0];
+        double maxVal = values[0];
         double sqrtMax = Math.sqrt(values[0]);
 
         //calculating the sum, minimum, maximum, and the square root of the maximum value
         for (double value : values) {
             sum += value;
-            if (value < min) {
-                min = value;
+            if (value < minVal) {
+                minVal = value;
             }
-            if (value > max) {
-                max = value;
-                sqrtMax = Math.sqrt(max);
+            if (value > maxVal) {
+                maxVal = value;
+                sqrtMax = Math.sqrt(maxVal);
             }
         }
 
@@ -114,8 +114,8 @@ public class Calculator {
         //displaying the calculated values to the user
         System.out.println("Sum of all values: " + sum);
         System.out.println("Average value: " + average);
-        System.out.println("Minimum value: " + min);
-        System.out.println("Maximum value: " + max);
+        System.out.println("Minimum value: " + minVal);
+        System.out.println("Maximum value: " + maxVal);
         System.out.println("Square root of the maximum value: " + sqrtMax);
     }
 }
