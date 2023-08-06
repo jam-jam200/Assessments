@@ -7,8 +7,8 @@ public class Calculator {
         int option;
 
         do {
-            // Displaying the menu with user options
-            System.out.println("Please select an option:");
+            // Displaying options for users
+            System.out.println("Please select an option from the list below:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
             System.out.println("2. Convert user input and round to 2 decimal points");
             System.out.println("3. Accept 5 values and display various calculations");
@@ -19,7 +19,7 @@ public class Calculator {
 
             switch (option) {
                 case 1:
-                    performOperation(scanner, "Enter the first whole number: ", "Enter the second whole number: ", (a, b) -> a + b);
+                    calculateSumOfTwoNumbers(scanner);
                     break;
                 case 2:
                     performOperation(scanner, "Enter a number: ", "", (a, b) -> Math.round(a * 100.0) / 100.0);
@@ -36,6 +36,34 @@ public class Calculator {
         } while (option != 0);
 
         scanner.close();
+    }
+
+    // Method to calculate the sum of 2 whole numbers
+    public static void calculateSumOfTwoNumbers(Scanner scanner) {
+        int num1, num2;
+
+        // Prompting user to enter the first whole number
+        do {
+            System.out.print("Enter the first whole number: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a whole number.");
+                scanner.next();
+            }
+            num1 = scanner.nextInt();
+        } while (num1 < Integer.MIN_VALUE || num1 > Integer.MAX_VALUE);
+
+        // Prompting user to enter the second whole number
+        do {
+            System.out.print("Enter the second whole number: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a whole number.");
+                scanner.next();
+            }
+            num2 = scanner.nextInt();
+        } while (num2 < Integer.MIN_VALUE || num2 > Integer.MAX_VALUE);
+
+        int sum = num1 + num2;
+        System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
     }
 
     // Method to perform binary operations (e.g., sum)
