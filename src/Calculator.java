@@ -6,32 +6,23 @@ public class Calculator {
         int option;
 
         do {
-            // Displaying the menu with user options
+            //displaying user's options
             System.out.println("Please select an option:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
-            System.out.println("2. Convert user input and round to 2 decimal points");
-            System.out.println("3. Accept 5 values and display various calculations");
+            System.out.println("2. Convert input and round up to 2 decimal points");
+            System.out.println("3. Input 5 values and calculate the sum, average value, maximum and minimum number, and square root of maximum number");
             System.out.println("0. Exit");
 
-            // Reading the user's option
+            //reading the user's option from the console
             option = scanner.nextInt();
 
-            // Performing the corresponding action based on the selected option
+            //performing the corresponding action based on the selected option
             switch (option) {
-                case 1:
-                    validateSumOfTwoNumbers(scanner);
-                    break;
-                case 2:
-                    validateConversionAndRoundInput(scanner);
-                    break;
-                case 3:
-                    validateAndDisplayValues(scanner);
-                    break;
-                case 0:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                case 1 -> validateSumOfTwoNumbers(scanner);
+                case 2 -> validateConversionAndRoundInput(scanner);
+                case 3 -> validateAndDisplayValues(scanner);
+                case 0 -> System.out.println("Goodbye!");
+                default -> System.out.println("Invalid option. Please try again.");
             }
         } while (option != 0);
 
