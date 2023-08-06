@@ -10,22 +10,23 @@ public class Calculator {
             // Displaying options for users
             System.out.println("Please select an option from the list below:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
-            System.out.println("2. Convert user input and round to 2 decimal points");
-            System.out.println("3. Accept 5 values and display various calculations");
+            System.out.println("2. Convert input and round up to 2 decimal points");
+            System.out.println("3. Enter 5 values to calculate the sum, average value, minimum value, maximum value  and square root of maximum value of inputted values");
             System.out.println("0. Exit");
 
-            // Reading the user's option
+            //reading user's input from the console
             option = scanner.nextInt();
 
             switch (option) {
                 case 1 -> calculateSumOfTwoNumbers(scanner);
-                case 2 -> performOperation(scanner, "Enter a number: ", "", (a, b) -> Math.round(a * 100.0) / 100.0);
-                case 3 -> processMultipleValues(scanner);
+                case 2 -> performOperation(scanner, "Enter a number: ", (double a) -> Math.round(a * 100.0) / 100.0);
+                case 3 -> performMultipleOperations(scanner);
                 case 0 -> System.out.println("Goodbye!");
                 default -> System.out.println("Invalid option. Please select a valid option (1, 2, 3, or 0 to exit).");
             }
         } while (option != 0);
 
+        //closing scanner to release resources since it's not in use
         scanner.close();
     }
 
@@ -58,27 +59,22 @@ public class Calculator {
     }
 
     // Method to perform binary operations (e.g., sum)
-    public static void performOperation(Scanner scanner, String prompt1, String prompt2, BinaryOperation operation) {
+    public static void performOperation(Scanner scanner, String prompt1, BinaryOperation operation) {
         System.out.print(prompt1);
         double num1 = scanner.nextDouble();
 
-        if (!prompt2.isEmpty()) {
-            System.out.print(prompt2);
-        }
-        double num2 = prompt2.isEmpty() ? 0 : scanner.nextDouble();
-
-        double result = operation.calculate(num1, num2);
+        double result = operation.calculate(num1);
         System.out.println("Result: " + result);
     }
 
     // Functional interface for binary operations
     @FunctionalInterface
     interface BinaryOperation {
-        double calculate(double a, double b);
+        double calculate(double a);
     }
 
     // Method to accept 5 values and display various calculations
-    public static void processMultipleValues(Scanner scanner) {
+    public static void performMultipleOperations(Scanner scanner) {
         double[] values = new double[5];
 
         // Accepting user input for 5 values and storing them in an array
