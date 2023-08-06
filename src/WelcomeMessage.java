@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class welcomeMessage {
+public class WelcomeMessage {
     public static void main(String[] args) {
         //create a scanner class object that can read the user's input from the console
         Scanner scanner = new Scanner(System.in);
