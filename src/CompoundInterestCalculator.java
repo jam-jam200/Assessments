@@ -13,8 +13,11 @@ public class CompoundInterestCalculator {
         // Prompt the user to enter the time
         double time = getUserInputDouble(scanner, "Enter the time: ");
 
-        // Prompt the user to enter the time unit (years, days, or months)
-        String timeUnit = getUserInputString(scanner, "Enter the time unit (years, days, or months): ");
+        String timeUnit;
+        // Validate the time unit input using a do-while loop
+        do {
+            timeUnit = getUserInputString(scanner, "Enter the time unit (years, days, or months): ");
+        } while (!isValidTimeUnit(timeUnit));
 
         // Calculate the compound interest based on the user's input
         double compoundInterest = calculateCompoundInterest(principal, rate, time, timeUnit);
@@ -25,6 +28,7 @@ public class CompoundInterestCalculator {
         scanner.close();
     }
 
+    // Method to get user input for a double value
     public static double getUserInputDouble(Scanner scanner, String prompt) {
         System.out.print(prompt);
         while (!scanner.hasNextDouble()) {
@@ -34,11 +38,18 @@ public class CompoundInterestCalculator {
         return scanner.nextDouble();
     }
 
+    // Method to get user input for a string value (time unit)
     public static String getUserInputString(Scanner scanner, String prompt) {
         System.out.print(prompt);
         return scanner.next().toLowerCase();
     }
 
+    // Method to validate the time unit input
+    public static boolean isValidTimeUnit(String timeUnit) {
+        return timeUnit.equals("years") || timeUnit.equals("days") || timeUnit.equals("months");
+    }
+
+    // Method to calculate compound interest
     public static double calculateCompoundInterest(double principal, double rate, double time, String timeUnit) {
         double n; // number of times the interest is compounded per time unit
 
