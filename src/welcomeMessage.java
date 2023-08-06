@@ -17,10 +17,23 @@ public class welcomeMessage {
         System.out.println("Date of Birth in this format (dd-mm-yyyy): ");
         String dob = scanner.nextLine();
 
+        //closing scanner to release resources since it's not in use
+        scanner.close();
 
+        //converting user's dob to a LocalDate object
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+        LocalDate localDate = LocalDate.parse(dobString, formatter);
 
+        //getting the current date using LocalDate
+        LocalDate currentDate = LocalDate.now();
 
+        //using calendar class to calculate the age of the user
+        int age = calculateAge(dob, currentDate);
 
+        //formatting the current date using the DateTimeFormatter
+        String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("mm-dd-yyyy"));
+
+        System.out.println("Welcome " + name + ", you are " + age + " years old and today’s date is " + formattedDate);
 
 
 
