@@ -22,7 +22,7 @@ public class Calculator {
                 case 2 -> performOperation(scanner, "Enter a number: ", (double a) -> Math.round(a * 100.0) / 100.0);
                 case 3 -> performMultipleOperations(scanner);
                 case 0 -> System.out.println("Goodbye!");
-                default -> System.out.println("Invalid option. Please select a valid option (1, 2, 3, or 0 to exit).");
+                default -> System.out.println("Invalid option. Please select a valid option between 1, 2, 3, or 0 to exit program.");
             }
         } while (option != 0);
 
@@ -30,13 +30,14 @@ public class Calculator {
         scanner.close();
     }
 
-    // Method to calculate the sum of 2 whole numbers
+    // method to calculate the sum of 2 whole numbers
     public static void calculateSumOfTwoNumbers(Scanner scanner) {
         int num1, num2;
 
-        // Prompting user to enter the first whole number
+        // prompting user to enter the first whole number
         do {
             System.out.print("Enter the first whole number: ");
+            //checks if user entered a number that isn't a whole number and also stops the loop from becoming an infinite loop
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a whole number.");
                 scanner.next();
@@ -44,9 +45,10 @@ public class Calculator {
             num1 = scanner.nextInt();
         } while (num1 < Integer.MIN_VALUE || num1 > Integer.MAX_VALUE);
 
-        // Prompting user to enter the second whole number
+        // prompting user to enter the second whole number
         do {
             System.out.print("Enter the second whole number: ");
+            //checks if user entered a number that isn't a whole number and also stops the loop from becoming an infinite loop
             while (!scanner.hasNextInt()) {
                 System.out.println("Invalid input. Please enter a whole number.");
                 scanner.next();
@@ -58,7 +60,7 @@ public class Calculator {
         System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
     }
 
-    // Method to perform binary operations (e.g., sum)
+    // method to calculate multiple operations
     public static void performOperation(Scanner scanner, String prompt1, BinaryOperation operation) {
         System.out.print(prompt1);
         double num1 = scanner.nextDouble();
