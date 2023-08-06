@@ -9,9 +9,12 @@ public class WelcomeMessage {
     public static void main(String[] args) {
         //create a scanner class object that can read the user's input from the console
         Scanner scanner = new Scanner(System.in);
+
         //prompting user to input details(name, gender, date of birth)
         System.out.println("Welcome! Please input the following details accordingly: ");
+
         System.out.println("Name: ");
+        //reading user's input from the console
         String name = scanner.nextLine();
 
         System.out.println("Gender: ");
@@ -33,7 +36,7 @@ public class WelcomeMessage {
             }
         }
 
-        //closing scanner to release resources since it's not in use
+        //closing the scanner to release resources associated with standard input (System.in)
         scanner.close();
 
         //getting the current date using LocalDate

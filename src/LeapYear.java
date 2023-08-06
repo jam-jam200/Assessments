@@ -8,16 +8,16 @@ public class LeapYear {
         System.out.print("Enter a year: ");
         int year = scanner.nextInt();
 
-        // Check if the year is a leap year using the isLeapYear method
+        //checking if the year is a leap year using the isLeapYear method
         boolean isLeapYear = isLeapYear(year);
 
-        // Display the result to the user
+        //displaying the result to the user
         if (isLeapYear) {
             System.out.println(year + " is a leap year.");
         } else {
-            System.out.println(year + " is not a leap year.");
+            System.out.println("sorry, " + year + " is not a leap year.");
         }
-
+        //closing the scanner to release resources associated with standard input (System.in)
         scanner.close();
     }
 

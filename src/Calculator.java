@@ -26,6 +26,7 @@ public class Calculator {
             }
         } while (option != 0);
 
+        //closing the scanner to release resources associated with standard input (System.in)
         scanner.close();
     }
 
@@ -110,7 +111,7 @@ public class Calculator {
 
         double average = sum / values.length;
 
-        // Displaying the calculated values to the user
+        //displaying the calculated values to the user
         System.out.println("Sum of all values: " + sum);
         System.out.println("Average value: " + average);
         System.out.println("Minimum value: " + min);
