@@ -59,7 +59,7 @@ public class CompoundInterestCalculator {
          //number of times the interest is compounded per time unit
          double n;
 
-        // Convert time to years for calculation
+        //converting the time to years for calculation
         switch (unit) {
             case "days" -> {
                 n = 365.0;
@@ -72,7 +72,7 @@ public class CompoundInterestCalculator {
             default -> n = 1.0;
         }
 
-        // Calculate compound interest using the formula A = P(1 + r/n)^(nt)
+        //calculating compound interest using the formula A = P(1 + r/n)^(nt)
         double amount = principal * Math.pow(1 + (rate / (100 * n)), n * time);
         return amount - principal;
     }
