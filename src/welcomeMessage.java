@@ -22,19 +22,29 @@ public class welcomeMessage {
 
         //converting user's dob to a LocalDate object
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
-        LocalDate localDate = LocalDate.parse(dobString, formatter);
+        LocalDate localDateDob = LocalDate.parse(dobString, formatter);
 
         //getting the current date using LocalDate
         LocalDate currentDate = LocalDate.now();
 
-        //using calendar class to calculate the age of the user
-        int age = calculateAge(dob, currentDate);
+        //using Calendar class to calculate the age of the user
+        int age = calculateAge(localDateDob, currentDate);
 
         //formatting the current date using the DateTimeFormatter
         String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("mm-dd-yyyy"));
 
         System.out.println("Welcome " + name + ", you are " + age + " years old and today’s date is " + formattedDate);
 
+    }
+
+    //Calculating the age of user using the Calendar class
+
+    public static int calculateAge(LocalDate localDateDob, LocalDate currentDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(localDateDob.getYear(), localDateDob.getMonthValue() -1, localDateDob.getDayOfMonth());
+
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.set(currentDate.getYear(), currentDate.getMonthValue(), currentDate.getDayOfMonth());
 
 
     }
