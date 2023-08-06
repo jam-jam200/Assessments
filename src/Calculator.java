@@ -10,7 +10,7 @@ public class Calculator {
             System.out.println("Please select an option:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
             System.out.println("2. Convert input and round up to 2 decimal points");
-            System.out.println("3. Input 5 values and calculate the sum, average value, maximum and minimum number, and square root of maximum number");
+            System.out.println("3. Input 5 values and calculate the sum, average, maximum, minimum, and square root of maximum number");
             System.out.println("0. Exit");
 
             //reading the user's option from the console
@@ -20,7 +20,7 @@ public class Calculator {
             switch (option) {
                 case 1 -> sumOfTwoNumbers(scanner);
                 case 2 -> conversionAndRoundInput(scanner);
-                case 3 -> validateAndDisplayValues(scanner);
+                case 3 -> performMultipleOperations(scanner);
                 case 0 -> System.out.println("Goodbye!");
                 default -> System.out.println("Invalid option. Please try again.");
             }
@@ -79,12 +79,13 @@ public class Calculator {
     }
 
     //method to calculate the sum, average, minimum, maximum and square root of maximum value of 5 values
-    public static void validateAndDisplayValues(Scanner scanner) {
+    public static void performMultipleOperations(Scanner scanner) {
+        //initializing an array of type double with a size of 5 number
         double[] values = new double[5];
 
         System.out.println("Enter 5 numeric values:");
 
-        // Accepting user input for 5 values and storing them in an array
+        //accepting user inputs and storing them in an array called values
         for (int i = 0; i < 5; i++) {
             System.out.print("Enter value " + (i + 1) + ": ");
             values[i] = validateInput(scanner);
@@ -95,7 +96,7 @@ public class Calculator {
         double max = values[0];
         double sqrtMax = Math.sqrt(values[0]);
 
-        // Calculating sum, minimum, maximum, and the square root of the maximum value
+        //calculating the sum, minimum, maximum, and the square root of the maximum value
         for (double value : values) {
             sum += value;
             if (value < min) {
