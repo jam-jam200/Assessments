@@ -18,8 +18,8 @@ public class Calculator {
 
             //performing the corresponding action based on the selected option
             switch (option) {
-                case 1 -> validateSumOfTwoNumbers(scanner);
-                case 2 -> validateConversionAndRoundInput(scanner);
+                case 1 -> sumOfTwoNumbers(scanner);
+                case 2 -> conversionAndRoundInput(scanner);
                 case 3 -> validateAndDisplayValues(scanner);
                 case 0 -> System.out.println("Goodbye!");
                 default -> System.out.println("Invalid option. Please try again.");
@@ -29,8 +29,8 @@ public class Calculator {
         scanner.close();
     }
 
-    // Method 1: Calculate the sum of 2 whole numbers
-    public static void validateSumOfTwoNumbers(Scanner scanner) {
+    //method to calculate the sum of 2 whole numbers
+    public static void sumOfTwoNumbers(Scanner scanner) {
         System.out.print("Enter the first whole number: ");
         int num1 = validateWholeNumberInput(scanner);
         System.out.print("Enter the second whole number: ");
@@ -40,7 +40,7 @@ public class Calculator {
         System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
     }
 
-    // Method to validate whole number input
+    //method to validate whole number input from the user
     public static int validateWholeNumberInput(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             // If the user enters a non-integer value, display an error message
@@ -50,12 +50,12 @@ public class Calculator {
             scanner.next();
         }
 
-        // If the loop exits, it means the user has entered a valid whole number, so we return it
+       //proceeding with the validated number(whole number)
         return scanner.nextInt();
     }
 
-    // Method 2: Convert user input and round to 2 decimal points
-    public static void validateConversionAndRoundInput(Scanner scanner) {
+    //method to convert user input and round to 2 decimal points
+    public static void conversionAndRoundInput(Scanner scanner) {
         System.out.print("Enter a number: ");
         double number = validateDoubleInput(scanner);
 
