@@ -68,7 +68,7 @@ public class welcomeMessage {
         //calculating the years between the dob and the current date to get age
         int age = currentCalendar.get(Calendar.YEAR) - calendar.get(Calendar.YEAR);
         if (currentCalendar.get(Calendar.DAY_OF_YEAR) < calendar.get(Calendar.DAY_OF_YEAR)){
-//          //if user hasn't reached the date of birth this year, decrement age by 1
+//          //if user hasn't reached the date of birth this year, decrement age by 1 to get the exact age
             age--;
         }
         return age;
