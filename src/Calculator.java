@@ -18,20 +18,11 @@ public class Calculator {
             option = scanner.nextInt();
 
             switch (option) {
-                case 1:
-                    calculateSumOfTwoNumbers(scanner);
-                    break;
-                case 2:
-                    performOperation(scanner, "Enter a number: ", "", (a, b) -> Math.round(a * 100.0) / 100.0);
-                    break;
-                case 3:
-                    processMultipleValues(scanner);
-                    break;
-                case 0:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid option. Please select a valid option (1, 2, 3, or 0 to exit).");
+                case 1 -> calculateSumOfTwoNumbers(scanner);
+                case 2 -> performOperation(scanner, "Enter a number: ", "", (a, b) -> Math.round(a * 100.0) / 100.0);
+                case 3 -> processMultipleValues(scanner);
+                case 0 -> System.out.println("Goodbye!");
+                default -> System.out.println("Invalid option. Please select a valid option (1, 2, 3, or 0 to exit).");
             }
         } while (option != 0);
 
