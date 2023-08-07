@@ -6,8 +6,19 @@ public class LeapYear {
     Scanner scanner = new Scanner(System.in);
     int year = scanner.nextInt();
 
-    public
 
     boolean isLeapYear = isLeapYear(year);
   }
+
+  public static boolean isLeapYear(int year) {
+
+  }
+
 }
+
+/**
+ *
+ *
+ *
+ *
+ * **/
