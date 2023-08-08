@@ -9,9 +9,9 @@ public class LeapYear {
 
     boolean isLeapYear = isLeapYear(year);
 
-    if(isLeapYear(year)) {
+    if(isLeapYear) {
       System.out.println("Year " + year + " is a leap year");
-    } else if(isLeapYear(year)) {
+    } else {
       System.out.println("Year " + year + " is not a leap year");
     }
 
@@ -28,9 +28,4 @@ public class LeapYear {
 
 }
 
-/**
- *
- *
- *
- *
- * **/
+
