@@ -10,7 +10,7 @@ public class Calculator {
             System.out.println("Please select an option:");
             System.out.println("1. Calculate the sum of 2 whole numbers");
             System.out.println("2. Convert input and round up to 2 decimal points");
-            System.out.println("3. Input 5 values and calculate the sum, average, maximum, minimum, and square root of maximum number");
+            System.out.println("3. Inpytrut 5 values and calculate the sum, average, maximum, minimum, and square root of maximum number");
             System.out.println("0. Exit");
 
             //reading the user's option from the console
